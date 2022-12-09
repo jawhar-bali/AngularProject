@@ -30,5 +30,8 @@ export class ListEtudiantComponent implements OnInit {
     
   })
 }
+ //updateEtudiant
+ update() {}
 
 }
+ 

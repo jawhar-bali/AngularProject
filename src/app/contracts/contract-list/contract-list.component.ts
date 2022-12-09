@@ -53,5 +53,26 @@ export class ContractListComponent implements OnInit {
       },
     });
   }
+ /* exportExperienceExcel(){
+    this.contratService.makePDF().subscribe(x => {
+      const blob = new Blob([x], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      const n = (window.navigator as any);
+  if (n.msSaveOrOpenBlob) {
+  n.msSaveOrOpenBlob(blob);
+  return;
+  }
+      const data = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = data;
+      link.download="experience.xlsx";
+      link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
+  
+      setTimeout(function() {
+        window.URL.revokeObjectURL(data);
+        link.remove();
+      }, 100);
+  });
+  
+  }*/
 
 }

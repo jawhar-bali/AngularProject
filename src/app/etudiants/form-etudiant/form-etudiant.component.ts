@@ -22,14 +22,14 @@ export class FormEtudiantComponent implements OnInit {
     let id = this.currentRoute.snapshot.params['id'];
     if (id != null) {
       //update
-      this.action = 'Update';
+      this.action = 'update';
       this.etudiantService.getEtudiantById(id).subscribe((data: Etudiant) => {
         this.etudiant = data;
       });
       console.log('=================>' + this.etudiant);
     } else {
       //add
-      this.action = 'Add new';
+      this.action = 'add new';
       this.etudiant = new Etudiant();
     }
 
@@ -47,7 +47,7 @@ export class FormEtudiantComponent implements OnInit {
         .subscribe(() => console.log('complete'));
         location.reload();
     } else {
-      console.log('this.contrat:', this.etudiant);
+      console.log('this.etufiant:', this.etudiant);
       this.etudiantService.addEtudiant(this.etudiant).subscribe((result) => {
         if (result) {
           this.route.navigate(['/etudiants/EtudiantList'])
