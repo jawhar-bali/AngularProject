@@ -1,6 +1,6 @@
 <!-- Sidenav -->
 <nav
-  class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white"
+  class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-dark "
   id="sidenav-main"
   style="position: fixed"
 >
@@ -10,20 +10,20 @@
     <div class="sidenav-header d-flex align-items-center">
       <br />
 
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand responsive" href="#">
         <img
       
           src="./assets/img/kaddemlogo.png"
           class="navbar-brand-img"
           alt="..."
-          width="250"
-          height="350"
+          width="500"
+          height="400"
         />
       </a>
       <div class="ml-auto">
         <!-- Sidenav toggler -->
         <div
-          class="sidenav-toggler d-none d-xl-block"
+          class="sidenav-toggler  bg-danger"
           data-action="sidenav-unpin"
           data-target="#sidenav-main"
         >
@@ -41,36 +41,10 @@
         <!-- Divider -->
         <hr class="my-3" />
         <!-- Heading -->
-        <h6 class="navbar-heading p-0 text-muted">Dashboard</h6>
+        <h6 class="navbar-heading p-0 text-muted">KADDEM DASHBOARD</h6>
         <!-- Navigation -->
         <!-- Nav items -->
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="#navbar-Student"
-              data-toggle="collapse"
-              role="button"
-              aria-expanded="false"
-              aria-controls="navbar-Student"
-            >
-              <i class="ni ni-shop text-primary"></i>
-              <span class="nav-link-text">Etudiants</span>
-            </a>
-            <div class="collapse" id="navbar-Student">
-              <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                  <a [routerLink]="['/etudiants/EtudiantList']" class="nav-link">Listes Des Etudiants</a>
-                </li>
-                <li class="nav-item">
-                  <a [routerLink]="['/etudiants/FormEtudiant']" class="nav-link"
-                    >Ajouter un etudiant</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </li>
-
 
           <li class="nav-item">
             <a
@@ -81,17 +55,17 @@
               aria-expanded="false"
               aria-controls="navbar-Classe"
             >
-              <i class="ni ni-shop text-primary"></i>
-              <span class="nav-link-text">Classe</span>
+              <i class="ni ni-shop text-white"></i>
+              <span class="nav-link-text text-white">Classe</span>
             </a>
             <div class="collapse" id="navbar-Classe">
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                  <a [routerLink]="['/classes/ClasseList']" class="nav-link">Listes Des Classes</a>
+                  <a [routerLink]="['/classes/ClasseList']" class="nav-link text-white">Listes Des Classes</a>
                 </li>
                 <li class="nav-item">
-                  <a [routerLink]="['/classes/FormClasse']" class="nav-link"
-                    >Ajouter un classe</a
+                  <a [routerLink]="['/classes/FormClasse']" class="nav-link text-white"
+                    >Ajouter une classe</a
                   >
                 </li>
               </ul>
@@ -101,94 +75,57 @@
           <li class="nav-item">
             <a
               class="nav-link"
-              href="#navbar-Team"
+              href="#navbar-Student"
               data-toggle="collapse"
               role="button"
               aria-expanded="false"
-              aria-controls="navbar-Team"
+              aria-controls="navbar-Student"
             >
-              <i class="ni ni-shop text-primary"></i>
-              <span class="nav-link-text">Teams</span>
+              <i class="ni ni-shop text-white"></i>
+              <span class="nav-link-text text-white">Etudiants</span>
             </a>
-            <div class="collapse" id="navbar-Team">
+            <div class="collapse" id="navbar-Student">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item ">
+                  <a [routerLink]="['/etudiants/EtudiantList']" class="nav-link text-white">Liste des Etudiants</a>
+                </li>
+                <li class="nav-item text-white">
+                  <a [routerLink]="['/etudiants/FormEtudiant']" class="nav-link text-white"
+                    >Ajouter un etudiant</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#navbar-Projet"
+              data-toggle="collapse"
+              role="button"
+              aria-expanded="false"
+              aria-controls="navbar-Projet"
+            >
+              <i class="ni ni-shop text-white"></i>
+              <span class="nav-link-text text-white">Projet</span>
+            </a>
+            <div class="collapse" id="navbar-Projet">
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">List Of Teams</a>
+                  <a [routerLink]="['/projets/ProjetList']" class="nav-link text-white">Listes Des Projets</a>
                 </li>
                 <li class="nav-item">
-                  <a [routerLink]="['/app-add-projet']" class="nav-link"
-                    >Add New Team</a
+                  <a [routerLink]="['/projets/FormProjet']" class="nav-link text-white"
+                    >Ajouter un projet</a
                   >
                 </li>
               </ul>
             </div>
           </li>
 
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="#navbar-Product"
-              data-toggle="collapse"
-              role="button"
-              aria-expanded="false"
-              aria-controls="navbar-Product"
-            >
-              <i class="ni ni-shop text-primary"></i>
-              <span class="nav-link-text">Projects</span>
-            </a>
-            <div class="collapse" id="navbar-Product">
-              <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                  <a [routerLink]="['/listeetudiant']" class="nav-link"
-                    >List Of Projects</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a [routerLink]="['/app-add-projet']" class="nav-link"
-                    >Add New Project</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">update projet</a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">les taches par projet</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="#navbar-Factures"
-              data-toggle="collapse"
-              role="button"
-              aria-expanded="false"
-              aria-controls="navbar-Factures"
-            >
-              <i class="ni ni-shop text-primary"></i>
-              <span class="nav-link-text">Tasks</span>
-            </a>
-            <div class="collapse" id="navbar-Factures">
-              <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                  <a [routerLink]="['/facturenonpayer']" class="nav-link"
-                    >Factures Non payer
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a [routerLink]="['/facturepayer']" class="nav-link"
-                    >Factures payer</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a [routerLink]="['/facture/add']" class="nav-link"
-                    >Nouvelle Facture</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </li>
+
           <li class="nav-item">
             <a
               class="nav-link"
@@ -198,76 +135,28 @@
               aria-expanded="false"
               aria-controls="navbar-contract"
             >
-              <i class="ni ni-shop text-primary"></i>
-              <span class="nav-link-text">Contrats</span>
+              <i class="ni ni-shop text-white"></i>
+              <span class="nav-link-white text-white">Contrats</span>
             </a>
             <div class="collapse" id="navbar-contract">
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                  <a [routerLink]="['/contracts/ContractsList']" class="nav-link"
+                  <a [routerLink]="['/contracts/ContractsList']" class="nav-link text-white"
                     >Listes Des Contrats</a
                   >
                 </li>
                 <li class="nav-item">
-                  <a [routerLink]="['/contracts/addContract']" class="nav-link"
+                  <a [routerLink]="['/contracts/addContract']" class="nav-link text-white"
                     >Ajouter un contrat</a
                   >
                 </li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="#navbar-University"
-              data-toggle="collapse"
-              role="button"
-              aria-expanded="false"
-              aria-controls="navbar-University"
-            >
-              <i class="ni ni-shop text-primary"></i>
-              <span class="nav-link-text">University</span>
-            </a>
-            <div class="collapse" id="navbar-University">
-              <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                  <a [routerLink]="['/universites/universite/list']" class="nav-link"
-                    >List Of Universities</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a [routerLink]="['/universites/universite/add']" class="nav-link"
-                    >Add New University</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="#navbar-Department"
-              data-toggle="collapse"
-              role="button"
-              aria-expanded="false"
-              aria-controls="navbar-Department"
-            >
-              <i class="ni ni-shop text-primary"></i>
-              <span class="nav-link-text">Departments</span>
-            </a>
-            <div class="collapse" id="navbar-Department">
-              <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                  <a [routerLink]="['/departments/Department']" class="nav-link">List Of Departments</a>
-                </li>
-                <li class="nav-item">
-                  <a [routerLink]="['/departments/Department/add']" class="nav-link"
-                    >Add New Department</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </li>
+
+
+
+
         </ul>
       </div>
     </div>
@@ -276,45 +165,12 @@
 <div class="main-content" id="panel">
   <!-- Topnav -->
   <nav
-    class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom"
+    class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom bg-danger"
   >
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         
-      <!--    <img
-            src="./assets/img/esprti-removebg-preview.png"
-            class="navbar-brand-img"
-            alt="..."
-            width="150"
-            height="120"
-          />--> 
     
-        
-        <!-- Search form -->
-      <!-- <form
-          class="navbar-search navbar-search-light form-inline mr-sm-3"
-          id="navbar-search-main"
-        >
-          <div class="form-group mb-0">
-            <div class="input-group input-group-alternative input-group-merge">
-              <div class="input-group-prepend">
-                <span class="input-group-text"
-                  ><i class="fas fa-search"></i
-                ></span>
-              </div>
-               <input class="form-control" placeholder="Search" type="text" />--> 
-        <!--   </div>
-          </div>
-          <button
-            type="button"
-            class="close"
-            data-action="search-close"
-            data-target="#navbar-search-main"
-            aria-label="Close"
-          >
-            <span aria-hidden="true"></span>
-          </button>
-        </form>-->
         <!-- Navbar links -->
         <ul class="navbar-nav align-items-center ml-md-auto">
           <li class="nav-item d-xl-none">
@@ -363,35 +219,7 @@
                 </h6>
               </div>
               <!-- List group -->
-              <div class="list-group list-group-flush">
-                <a href="#!" class="list-group-item list-group-item-action">
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                      <!-- Avatar -->
-                      <img
-                        alt="Image placeholder"
-                        src="./assets/img/theme/team-1.jpg"
-                        class="avatar rounded-circle"
-                      />
-                    </div>
-                    <div class="col ml--2">
-                      <div
-                        class="d-flex justify-content-between align-items-center"
-                      >
-                        <div>
-                          <h4 class="mb-0 text-sm">Welcome</h4>
-                        </div>
-                        <div class="text-right text-muted">
-                          <small>2 hrs ago</small>
-                        </div>
-                      </div>
-                      <p class="text-sm mb-0">
-                        Let's meet at Starbucks at 11:30. Wdyt?
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              </div>
+            
               <!-- View all -->
               <a
                 href="#!"
@@ -519,7 +347,7 @@
   </nav>
   <!-- Header -->
   <!-- Header -->
-  <div class="header bg-primary pb-6">
+  <div class="header bg-danger pb-6">
     <div class="container-fluid">
       <div class="header-body">
         <div class="row align-items-center py-4">
@@ -549,7 +377,7 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid mt--6">
+  <div class="container-fluid mt--6 bg-dark">
     <div class="row">
       <div class="col-xl-12">
         <div class="card">

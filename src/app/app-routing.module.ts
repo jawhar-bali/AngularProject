@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'departments', loadChildren: () => import('./departments/departments.module').then(m => m.DepartmentsModule) },
   { path: 'universites', loadChildren: () => import('./universites/universites.module').then(m => m.UniversitesModule) },
   { path: 'classes', loadChildren: () => import('./classes/classes.module').then(m => m.ClassesModule) },
+  { path: 'projets', loadChildren: () => import('./projets/projets.module').then(m => m.ProjetsModule) },
 ];
 
 @NgModule({

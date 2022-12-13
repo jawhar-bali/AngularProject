@@ -1,0 +1,31 @@
+<div id="content" #content> 
+    <h1>List projets</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>type de projets</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let projet of projetList">
+                <td>{{projet.idProjet}}</td>
+                <td>{{projet.nomProjet}}</td>
+                <td> {{projet.typeProjet}}
+                </td>
+             
+                <td>
+                    <button class="btn btn-sm btn-danger" (click)="delete(projet.idProjet)" >
+                        Delete
+                    </button>
+                    &nbsp;
+                    <a class="btn btn-sm btn-warning" [routerLink]="['/projets/updateProjet',projet.idProjet]">
+                        Update  
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>

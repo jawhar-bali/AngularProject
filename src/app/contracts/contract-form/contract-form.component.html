@@ -24,8 +24,8 @@
     <select [(ngModel)]="contrat.specialite" name="specialite" class="form-control" required #s="ngModel">
       <option value="IA">IA</option>
       <option value="RESEAU">RESEAU</option>
-      <option value="kids">CLOUD</option>
-      <option value="kids">SECURITE</option>
+      <option value="CLOUD">CLOUD</option>
+      <option value="SECURITE">SECURITE</option>
     </select>
     <div class="alert alert-danger" *ngIf="s.invalid && s.touched">
       <div *ngIf="s.hasError('required')">This field is required</div>
