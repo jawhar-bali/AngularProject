@@ -11,12 +11,14 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
+//import { ClasseComponent } from './classe/classe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddProjetComponent,
-    HeaderComponent
+    HeaderComponent,
+   // ClasseComponent
   ],
   imports: [
     BrowserModule,

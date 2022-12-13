@@ -1,0 +1,31 @@
+<div id="content" #content> 
+    <h1>List classes</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>nombreEtudiants</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let classe of classeList">
+                <td>{{classe.idClasse}}</td>
+                <td>{{classe.nomClasse}}</td>
+                <td> {{classe.nombreEtudiants}}
+                </td>
+             
+                <td>
+                    <button class="btn btn-sm btn-danger" (click)="delete(classe.idClasse)" >
+                        Delete
+                    </button>
+                    &nbsp;
+                    <a class="btn btn-sm btn-warning" [routerLink]="['/classes/updateClasse',classe.idClasse]">
+                        Update  
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>

@@ -12,10 +12,11 @@
 
       <a class="navbar-brand" href="#">
         <img
-          src="./assets/img/logo1.png"
+      
+          src="./assets/img/kaddemlogo.png"
           class="navbar-brand-img"
           alt="..."
-          width="120"
+          width="250"
           height="350"
         />
       </a>
@@ -54,21 +55,49 @@
               aria-controls="navbar-Student"
             >
               <i class="ni ni-shop text-primary"></i>
-              <span class="nav-link-text">Students</span>
+              <span class="nav-link-text">Etudiants</span>
             </a>
             <div class="collapse" id="navbar-Student">
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                  <a [routerLink]="['/etudiants/EtudiantList']" class="nav-link">List Of Students</a>
+                  <a [routerLink]="['/etudiants/EtudiantList']" class="nav-link">Listes Des Etudiants</a>
                 </li>
                 <li class="nav-item">
                   <a [routerLink]="['/etudiants/FormEtudiant']" class="nav-link"
-                    >Add New Student</a
+                    >Ajouter un etudiant</a
                   >
                 </li>
               </ul>
             </div>
           </li>
+
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#navbar-Classe"
+              data-toggle="collapse"
+              role="button"
+              aria-expanded="false"
+              aria-controls="navbar-Classe"
+            >
+              <i class="ni ni-shop text-primary"></i>
+              <span class="nav-link-text">Classe</span>
+            </a>
+            <div class="collapse" id="navbar-Classe">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                  <a [routerLink]="['/classes/ClasseList']" class="nav-link">Listes Des Classes</a>
+                </li>
+                <li class="nav-item">
+                  <a [routerLink]="['/classes/FormClasse']" class="nav-link"
+                    >Ajouter un classe</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
+
           <li class="nav-item">
             <a
               class="nav-link"
@@ -170,18 +199,18 @@
               aria-controls="navbar-contract"
             >
               <i class="ni ni-shop text-primary"></i>
-              <span class="nav-link-text">Contracts</span>
+              <span class="nav-link-text">Contrats</span>
             </a>
             <div class="collapse" id="navbar-contract">
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
                   <a [routerLink]="['/contracts/ContractsList']" class="nav-link"
-                    >List Of Contracts</a
+                    >Listes Des Contrats</a
                   >
                 </li>
                 <li class="nav-item">
                   <a [routerLink]="['/contracts/addContract']" class="nav-link"
-                    >Add New Contract</a
+                    >Ajouter un contrat</a
                   >
                 </li>
               </ul>
@@ -252,13 +281,14 @@
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         
-          <img
+      <!--    <img
             src="./assets/img/esprti-removebg-preview.png"
             class="navbar-brand-img"
             alt="..."
             width="150"
             height="120"
-          />
+          />--> 
+    
         
         <!-- Search form -->
       <!-- <form
@@ -448,43 +478,38 @@
               aria-expanded="false"
             >
               <div class="media align-items-center">
-                <span class="avatar avatar-sm rounded-circle">
-                  <img
-                    alt="Image placeholder"
-                    src="./assets/img/theme/team-1.jpg"
-                  />
-                </span>
+             
                 <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm font-weight-bold"
-                    >Anouar Mhamdi</span
+                    ></span
                   >
                 </div>
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-header noti-title">
-                <h6 class="text-overflow m-0">Welcome!</h6>
+                <h6 class="text-overflow m-0"></h6>
               </div>
               <a href="#!" class="dropdown-item">
                 <i class="ni ni-single-02"></i>
-                <span>My profile</span>
+                <span></span>
               </a>
               <a href="#!" class="dropdown-item">
                 <i class="ni ni-settings-gear-65"></i>
-                <span>Settings</span>
+                <span></span>
               </a>
               <a href="#!" class="dropdown-item">
                 <i class="ni ni-calendar-grid-58"></i>
-                <span>Activity</span>
+                <span></span>
               </a>
               <a href="#!" class="dropdown-item">
                 <i class="ni ni-support-16"></i>
-                <span>Support</span>
+                <span></span>
               </a>
               <div class="dropdown-divider"></div>
               <a href="#!" class="dropdown-item">
                 <i class="ni ni-user-run"></i>
-                <span>Logout</span>
+                <span></span>
               </a>
             </div>
           </li>
@@ -499,7 +524,7 @@
       <div class="header-body">
         <div class="row align-items-center py-4">
           <div class="col-lg-6 col-7">
-            <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+            <h6 class="h2 text-white d-inline-block mb-0"></h6>
             <nav
               aria-label="breadcrumb"
               class="d-none d-md-inline-block ml-md-4"
@@ -508,9 +533,9 @@
                 <li class="breadcrumb-item">
                   <a href="#"><i class="fas fa-home"></i></a>
                 </li>
-                <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+                <li class="breadcrumb-item"><a href="#"></a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Default
+                 
                 </li>
               </ol>
             </nav>
