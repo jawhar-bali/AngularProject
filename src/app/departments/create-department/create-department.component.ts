@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { Department } from 'src/app/core/Model/Department';
-import { Universite } from 'src/app/core/Model/Universite';
 import { DepartmentService } from 'src/app/core/services/department.service';
 
 
@@ -12,67 +11,69 @@ import { DepartmentService } from 'src/app/core/services/department.service';
   styleUrls: ['./create-department.component.css']
 })
 export class CreateDepartmentComponent implements OnInit {
-  listdepartments: Department[];
-action:String;
-nomUni:any;
-department: Department=new Department();
+  department: Department;
+  action: string;
+  departmentList: Department[];
 
-  constructor(private departmentserivce: DepartmentService, private router: Router,  private currentRoute: ActivatedRoute) { }
+  constructor(private departmentService: DepartmentService,
+    private route: Router,
+    private currentRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.department.universites = {nomUni:null};
-    
     this.department = new Department();
     let id = this.currentRoute.snapshot.params['id'];
     if (id != null) {
       //update
       this.action = 'update';
-      this.departmentserivce.getDepartmentByIdUniv(this.nomUni).subscribe((data:Department[]) => {
-        
-        this.department.universites.nomUni= data;
+      this.departmentService.getDepartmentById(id).subscribe((data: Department) => {
+        this.department = data;
       });
       console.log('=================>' + this.department);
-      this.goToDepartmentList
     } else {
       //add
       this.action = 'add new';
       this.department = new Department();
-      this.goToDepartmentList
     }
 
     //get
-    this.departmentserivce.getDepartmentByIdUniv(this.nomUni).subscribe((data: Department[]) => {
-      this.listdepartments = data;
+    this.departmentService.getAlldep().subscribe((data: Department[]) => {
+      this.departmentList = data;
     });
   }
 
   //add|update
   add() {
     if (this.action == 'update') {
-      this.departmentserivce
-        .updateDepartment(this.department)
-        .subscribe(() => console.log('complete'));
+      console.log(this.department)
+      this.departmentService
+        .addDepartment(this.department)
+        .subscribe((result) => {
+          if (result) {
+            this.route.navigate(['/departments/Department/list'])
+            this.departmentList = [this.department, ...this.departmentList];
+            //location.reload();
+          }
+        });
+        
     } else {
-    
       console.log('this.department:', this.department);
-      this.departmentserivce.addDepartment(this.department).subscribe((result) => {
+      this.departmentService.addDepartment(this.department).subscribe((result) => {
         if (result) {
-          this.router.navigate(['/departments/Department/list'])
-          this.listdepartments = [this.department, ...this.listdepartments];
-          location.reload();
+          this.route.navigate(['/departments/Department/list'])
+          this.departmentList = [this.department, ...this.departmentList];
+          //location.reload();
         }
       });
     }
-    
   }
 
   //delete
   delete() {
-    this.departmentserivce.deleteDepartment(this.department.idDepart);
+    this.departmentService.deleteDepartment(this.department.idDepart);
   }
   //navigate
   goToDepartmentList() {
-    this.router.navigate(['/Department']);
+    this.route.navigate(['/departments/Department/list']);
   }
 }
 

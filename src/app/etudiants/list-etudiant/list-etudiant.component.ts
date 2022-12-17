@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef , ViewChild } from '@angular/core';
 import { Etudiant } from 'src/app/core/Model/Etudiant';
 import { EtudiantService } from 'src/app/core/services/etudiant.service';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-list-etudiant',
@@ -8,6 +9,7 @@ import { EtudiantService } from 'src/app/core/services/etudiant.service';
   styleUrls: ['./list-etudiant.component.css']
 })
 export class ListEtudiantComponent implements OnInit {
+  @ViewChild('content', { static: false }) el!: ElementRef;
 
   etudiant: Etudiant;
   etudiantList: Etudiant[];
@@ -32,6 +34,14 @@ export class ListEtudiantComponent implements OnInit {
 }
  //updateEtudiant
  update() {}
-
+ makePDF() {
+    
+  let pdf = new jsPDF('p', 'pt', 'a4');
+  pdf.html(this.el.nativeElement, {
+    callback: (pdf) => {
+      pdf.save('Liste des etudiants.pdf');
+    },
+  });
+}
 }
  

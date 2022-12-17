@@ -14,24 +14,24 @@ export class DepartmentService {
     })
   }
   constructor(private http : HttpClient) { }
-  url: string = 'http://localhost:8088/Spring';
+  url: string = 'http://localhost:8082/kaddem/Departement';
 
 
   getAlldep() {
-    return this.http.get<Department[]>(this.url + `/getD`);
+    return this.http.get<Department[]>(this.url + '/AfficherAllDepartement');
   }
   addDepartment(department: Department): Observable<Object> {
-    return this.http.post(this.url + `/addDep`, department);
+    return this.http.post(this.url + `/AjouterDepartement`, department);
   }
   //updateDepartment(idDepart: number,department: department): Observable<Object> {
     //return this.http.put(this.url + `/putDep/${idDepart}`, department);
  // }
  
   deleteDepartment(idDepart: number): Observable<Object> {
-    return this.http.delete(this.url + `/delDep/${idDepart}`);
+    return this.http.delete(this.url + `/supprimerDepartement/${idDepart}`);
   }
   getDepartmentById(idDepart: number): Observable<Department> {
-    return this.http.get<Department>(this.url + `/department/${idDepart}`);
+    return this.http.get<Department>(this.url + `/AfficherDepartement/${idDepart}`);
   } 
  
   updateDepartment(department: Department): Observable<any> {
@@ -58,7 +58,7 @@ export class DepartmentService {
       });
     }
     updateDepart(idDepart: number,department: Department): Observable<any> {
-      return this.http.put(this.url + `/putDep/${idDepart}`,department
+      return this.http.put(this.url + `/ModifierDepartement`,department
       );
     }
    

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Department } from 'src/app/core/Model/Department';
 import { Observable } from "rxjs";
 import { DepartmentService } from 'src/app/core/services/department.service';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-list-department',
@@ -10,91 +11,38 @@ import { DepartmentService } from 'src/app/core/services/department.service';
   styleUrls: ['./list-department.component.css']
 })
 export class ListDepartmentComponent implements OnInit {
-  title = 'pagination';
-  page: number = 1;
-  count: number = 0;
-  tableSize: number = 1;
-  tableSizes: any = [1, 2, 15, 20];
+  @ViewChild('content', { static: false }) el!: ElementRef;
+  department: Department;
+  departmentList: Department[];
 
+  constructor(private departmentService: DepartmentService) { }
 
-  list: Department[];
-  listdepartments: any;
-  nomUni:any;
-  idDepart:number;
-  departmentsList:any;
-  codeDepartment:any;
-  idUni:number;
-  constructor(private departmentservice:DepartmentService,private router: Router,private uss: ActivatedRoute) { }
-
- /* listData: MatTableDataSource<any>;*/
   ngOnInit(): void {
-   this.getAlldep();
-  }
- 
-  getAlldep() {
-    this.departmentservice.getAlldep().subscribe((res) => {
-      this.listdepartments = res;
-      console.log(res)
+    this.department = new Department();
+    //getDepartments
+    this.departmentService.getAlldep().subscribe((data: Department[]) => {
+      this.departmentList = data;
     });
   }
-  updatedepartment(idDepart: number) {
-    this.router.navigate(['/departments/Department/putDepartement', idDepart]);
-  }
 
-  
-  deletedepartment(idDepart: number) {
-    this.departmentservice. deleteDepartment(idDepart).subscribe((data) => {
+  delete(id: number) {
+    this.departmentService.deleteDepartment(id).subscribe((data) => {
       console.log(data);
-      this.getAlldep();
-    });
-  }
-  
-  toadd(){
-    this.router.navigate(['/departments/Department/add'])
-  } 
-      
-  exportToPDF() {
-    this.departmentservice.exportPDF().subscribe((responseMessage: any) => {
-      const file = new Blob([responseMessage], {
-        type: 'application/pdf',
-      });
-      const fileURL = URL.createObjectURL(file);
-      window.open(fileURL);
-    });
-  }
-  recherche(idDepart: number){
-    this.departmentsList= this.departmentservice.getDepartmentByIdList(idDepart).subscribe(res => {
-       
-       this.departmentsList = res;
-       setTimeout(()=>{
-         this.list=[];
-         this.list[0]=this.departmentsList;
-         console.log( res);
-       },500)
-       
-       
-       
-
+      this.departmentService.getAlldep();
+      location.reload();
  
-      },
-     error => console.log(error));
+  })
+}
+ //updateDepartment
+ update() {}
+ makePDF() {
     
-     
-   ;}
-   onTableDataChange(event: any): void {
-    this.page = event
-    this.postList();
-  }
-  
-  onTableSizeChange(event: any){
-    this.tableSize = event.target.value;
-    this.page = 1;
-    this.postList();
-  }
-  postList(): void {
-    this.departmentservice.getAlldep().subscribe((data: Department[]) => {
-      this.departmentsList = data;
-    });
-  }
+  let pdf = new jsPDF('p', 'pt', 'a4');
+  pdf.html(this.el.nativeElement, {
+    callback: (pdf) => {
+      pdf.save('Liste des departements.pdf');
+    },
+  });
+}
    
 }

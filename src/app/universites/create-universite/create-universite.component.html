@@ -2,7 +2,7 @@
 <form #f="ngForm">
  <div class="form-group col-md-6">
     <label>Name:* </label>
-    <input type="text" name="nomUni" [(ngModel)]="universite.nomUni"
+    <input type="text" name="nomUniv" [(ngModel)]="universite.nomUniv"
     class="form-control" required minlength="3"
      pattern="[A-Za-z]{3,12}$" #n="ngModel">
     <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
@@ -17,36 +17,6 @@
        </div>
     </div>
  </div>
- <div class="form-group col-md-6">
-    <label>Adresse</label>
-    <input type="text" name="adresse"
-    [(ngModel)]="universite.adresse"class="form-control"
-    required #p="ngModel">
-    <div class="alert alert-danger" *ngIf="p.invalid && p.touched">
-      this field is required
-    </div>
-   <div *ngIf="p.hasError('minlength')">
-      minlength = 3 !
-   </div>
-   <div *ngIf="p.hasError('pattern')">
-     error pattern
-  </div>
-  </div>
-  <div class="form-group col-md-6">
-    <label>Description</label>
-    <input type="text" name="description"
-    [(ngModel)]="universite.description"
-    class="form-control" required #qt="ngModel">
-    <div class="alert alert-danger" *ngIf="qt.invalid && qt.touched">
-      this field is required
-    </div>
-    <div *ngIf="qt.hasError('minlength')">
-      minlength = 3 !
-   </div>
-   <div *ngIf="qt.hasError('pattern')">
-     error pattern
-  </div>
-  </div>
    
   <button (click)="add()"
    class="btn btn-sm btn-success"

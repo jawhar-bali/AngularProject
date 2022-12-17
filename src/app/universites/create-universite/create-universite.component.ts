@@ -11,68 +11,69 @@ import {UniversiteService}from 'src/app/core/services/universite.service'
 })
 export class CreateUniversiteComponent implements OnInit {
 
-  listUniversite: Universite[];
-action:String;
-universite: Universite;
-  
-  constructor(
-    private universiteservice: UniversiteService,
-    private currentRoute: ActivatedRoute,
-    private router: Router,
-   
-  ) {}
+  universite: Universite;
+  action: string;
+  universiteList: Universite[];
+
+  constructor(private universiteService: UniversiteService,
+    private route: Router,
+    private currentRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.universite = new Universite();
     let id = this.currentRoute.snapshot.params['id'];
     if (id != null) {
       //update
-      this.action = 'Update';
-      this.universiteservice.getUniversiteById(id).subscribe((data: Universite) => {
-        
+      this.action = 'update';
+      this.universiteService.getUniversiteById(id).subscribe((data: Universite) => {
         this.universite = data;
       });
       console.log('=================>' + this.universite);
-      this.goToDepartmentList
     } else {
       //add
-      this.action = 'Add';
+      this.action = 'add new';
       this.universite = new Universite();
-      this.goToDepartmentList
     }
 
     //get
-    this.universiteservice.allUni().subscribe((data: Universite[]) => {
-      this.listUniversite = data;
+    this.universiteService.allUni().subscribe((data: Universite[]) => {
+      this.universiteList = data;
     });
   }
 
   //add|update
   add() {
     if (this.action == 'update') {
-      this.universiteservice
-        .updateUni(this.universite)
-        .subscribe(() => console.log('complete'));
+      console.log(this.universite)
+      this.universiteService
+        .addUniv(this.universite)
+        .subscribe((result) => {
+          if (result) {
+            this.route.navigate(['/universites/universite'])
+            this.universiteList = [this.universite, ...this.universiteList];
+            //location.reload();
+          }
+        });
+        
     } else {
-    
       console.log('this.universite:', this.universite);
-      this.universiteservice.addUniv(this.universite).subscribe((result) => {
+      this.universiteService.addUniv(this.universite).subscribe((result) => {
         if (result) {
-          this.listUniversite = [this.universite, ...this.listUniversite];
-          location.reload();
+          this.route.navigate(['/universites/universite'])
+          this.universiteList = [this.universite, ...this.universiteList];
+          //location.reload();
         }
       });
     }
-    
   }
 
   //delete
   delete() {
-    this.universiteservice.deleteUni(this.universite.idUni);
+    this.universiteService.deleteUni(this.universite.idUniv);
   }
   //navigate
-  goToDepartmentList() {
-    this.router.navigate(['/universites/universite']);
+  goToUniversiteList() {
+    this.route.navigate(['/universites/Universite/list']);
   }
 }
 

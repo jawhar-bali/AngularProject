@@ -26,6 +26,10 @@
                     <a class="btn btn-sm btn-warning" [routerLink]="['/etudiants/updateEtudiant',etudiant.idEtudiant]">
                         Update  
                     </a>
+                    &nbsp;
+                    <a class="btn btn-sm btn-info" (click)="makePDF()" >
+                        generate pdf  
+                    </a>
                 </td>
             </tr>
         </tbody>

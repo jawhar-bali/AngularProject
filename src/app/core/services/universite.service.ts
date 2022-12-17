@@ -27,7 +27,8 @@ export class UniversiteService {
     return this.http.delete(this.url + `/supprimerUniversite/${idUni}`);
   }
   getUniversiteById(idUni: number): Observable<Universite> {
-    return this.http.get<Universite>(this.url + `/universite/${idUni}`);
+    //return this.http.get<Universite>(this.url + `/universite/${idUni}`);
+    return this.http.get<Universite>(this.url + `/AfficherUniversite/${idUni}`);
   } 
   updateUni(universite: Universite ): Observable<Universite> {
     return this.http.put<Universite>(this.url + `/ModifierUniversite/`,universite );

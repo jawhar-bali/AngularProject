@@ -11,37 +11,29 @@ import { UniversiteService } from 'src/app/core/services/universite.service';
   styleUrls: ['./list-universite.component.css']
 })
 export class ListUniversiteComponent implements OnInit {
-  Universites: Universite[];
-  listUniversites :any ;
-  
- 
-  constructor(private universiteservice:UniversiteService,private router: Router,private uss: ActivatedRoute) { }
+  universite: Universite;
+  universiteList: Universite[];
 
+  constructor(private universiteService: UniversiteService) { }
+
+  ngOnInit(): void {
+    this.universite = new Universite();
+    //getUniversites
+    this.universiteService.allUni().subscribe((data: Universite[]) => {
+      this.universiteList = data;
+    });
+  }
+
+  delete(id: number) {
+    this.universiteService.deleteUni(id).subscribe((data) => {
+      console.log(data);
+      this.universiteService.allUni();
+      location.reload();
  
-    ngOnInit(): void {
-      this.allUni();
-     }
-    
-     allUni() {
-      this.universiteservice.allUni().subscribe((res) => {
-        this.listUniversites = res;
-      });
-    }
-    updateUniversite(idUni: number) {
-      this.router.navigate(['/universites/universite/putUni', idUni]);
-    }
-  
-    
-    deleteUniv(idUni: number) {
-      this.universiteservice.deleteUni(idUni).subscribe((data) => {
-        console.log(data);
-        this.allUni();
-      });
-    }
-    
-    toadd(){
-      this.router.navigate(['/universites/universite/add'])
-    } 
+  })
+}
+ //updateUniversite
+ update() {}
     
   }
  

@@ -5,11 +5,6 @@ import { Universite } from "./Universite";
 export class Department{
     idDepart:number;
     nomDepart:String;
-    code:String;
-    type:String;
-    
-    description:String;
-    universites:{nomUni:any}
 
     
 }
